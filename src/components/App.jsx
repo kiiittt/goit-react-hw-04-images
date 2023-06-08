@@ -15,7 +15,7 @@ const App = () => {
   const [query, setQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [totalCount, setTotalCount] = useState(0);
+  const [totalCount] = useState(0);
 
   const galleryRef = useRef(null);
 
