@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { fetchImages } from '../FindImage';
@@ -122,10 +121,3 @@ const App = () => {
 
 export default App;
 
-App.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.object),
-  currentPage: PropTypes.number,
-  query: PropTypes.string,
-  isLoading: PropTypes.bool,
-  selectedImage: PropTypes.object,
-};
