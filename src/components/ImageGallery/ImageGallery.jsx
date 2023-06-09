@@ -1,46 +1,26 @@
-import css from '../styles.module.css';
-import React, { Component } from 'react';
+import React, { forwardRef } from 'react';
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
+import css from '../styles.module.css';
 
-class ImageGallery extends Component {
-  galleryRef = React.createRef();
+const ImageGallery = forwardRef(({ images, onOpenModal }, ref) => {
+  return (
+    <div ref={ref} className={css.ImageGallery}>
+      {images.map(image => (
+        <ImageGalleryItem
+          key={image.id}
+          image={image}
+          onOpenModal={onOpenModal}
+          className={css.ImageGalleryItem}
+        />
+      ))}
+    </div>
+  );
+});
 
-  scrollToNewItems() {
-    if (this.galleryRef && this.galleryRef.current) {
-      this.galleryRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-      window.scrollTo({
-        top: document.documentElement.scrollHeight,
-        behavior: 'smooth',
-      });
-    }
-  }
-
-  render() {
-    const { images, onOpenModal } = this.props;
-
-    return (
-      <div ref={this.galleryRef} className={css.ImageGallery}>
-        {images.map(image => (
-          <ImageGalleryItem
-            key={image.id}
-            image={image}
-            onOpenModal={onOpenModal}
-            className={css.ImageGalleryItem}
-          />
-        ))}
-      </div>
-    );
-  }
-}
-
-export default ImageGallery;
-
-
-ImageGalleryItem.propTypes = {
-  image: PropTypes.object.isRequired,
+ImageGallery.propTypes = {
+  images: PropTypes.array.isRequired,
   onOpenModal: PropTypes.func.isRequired,
 };
+
+export default ImageGallery;

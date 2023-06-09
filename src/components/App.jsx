@@ -53,7 +53,7 @@ const App = () => {
 
     setIsLoading(true);
 
-    let fetchedImages; 
+    let fetchedImages;
 
     try {
       fetchedImages = await fetchImages(query, nextPage);
@@ -72,9 +72,9 @@ const App = () => {
 
     setIsLoading(false);
 
-    if (galleryRef.current && galleryRef.current.scrollToNewItems) {
-      galleryRef.current.scrollToNewItems();
-    }
+    // if (galleryRef.current && galleryRef.current.scrollToNewItems) {
+    //   galleryRef.current.scrollToNewItems();
+    // }
 
     const newTotalCount = images.length + fetchedImages.length;
     notify('Loaded next images.', newTotalCount);
@@ -120,4 +120,3 @@ const App = () => {
 };
 
 export default App;
-
