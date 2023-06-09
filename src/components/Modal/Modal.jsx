@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import css from '../styles.module.css';
 
 const Modal = ({ largeImageURL, onClose }) => {
-  const handleKeyDown = e => {
-    if (e.key === 'Escape') {
-      onClose();
-    }
-  };
+  const handleKeyDown = useCallback(
+    e => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    },
+    [onClose]
+  );
 
   const handleCloseClick = () => {
     onClose();
